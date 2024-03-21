@@ -21,4 +21,8 @@ if total_count % data_per_page > 0:
 
 # Iterating through the remaining pages and adding the number of users to the total count
 for i in range(2, total_pages + 1):
-    pass
+    response = requests.get(main_url, params={'page': i})
+    data = response.json()
+    total_users += len(data['data'])
+
+    
